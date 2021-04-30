@@ -1,23 +1,14 @@
-import logo from './logo.svg';
 import './App.css';
+import {NavTable} from './components/navTable/navTable'
+import {InfoTable} from './components/infoTable/infoTable'
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <NavTable title = "test main" link = "https://swapi.dev/api/"/>
+      <InfoTable title = "people" link = "https://swapi.dev/api/people"/>
+      
     </div>
   );
 }
