@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {NavTableRow} from "../navTableRow/navTableRow"
+import {getListByLink, digListByLink} from '../../swapiModule/swapiModule.js'
 //components import
 //end components import
 //import './table.css'
@@ -17,10 +18,7 @@ export class NavTable extends React.Component{
     
     componentDidMount() {
         
-        fetch(this.props.link)
-        .then((response) => {
-            return response.json();
-        })
+        getListByLink()
         .then((data) => {
             this.setState({
                 loadedData: data

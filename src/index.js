@@ -3,6 +3,17 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+//import {getListByLink, digListByLink} from './swapiModule/swapiModule.js'
+
+
+// getListByLink()//'https://swapi.dev/api/films')
+// .then(data => {console.log("then ", data)})
+// .catch(error => {console.log("catch ", error)});
+
+// digListByLink('https://swapi.dev/api/people')
+// .then(data => {console.log("then ", data)})
+// .catch(error => {console.log("catch ", error)});
+
 
 ReactDOM.render(
   <React.StrictMode>

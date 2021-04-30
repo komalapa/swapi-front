@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {InfoTableRow} from "../infoTableRow/infoTableRow"
+import {getListByLink, digListByLink} from '../../swapiModule/swapiModule.js'
 //components import
 //end components import
 //import './table.css'
@@ -17,10 +18,7 @@ export class InfoTable extends React.Component{
     
     componentDidMount() {
         
-        fetch(this.props.link)
-        .then((response) => {
-            return response.json();
-        })
+        digListByLink(this.props.link)
         .then((data) => {
             this.setState({
                 ...this.state,
@@ -39,7 +37,7 @@ export class InfoTable extends React.Component{
                 <h2>{this.props.title}</h2>
                 <table>
                     <tbody>
-                        {this.state.loadedData && this.state.loadedData.results.map(item => <InfoTableRow item = {item}/>)} 
+                        {this.state.loadedData && this.state.loadedData.map(item => <InfoTableRow item = {item}/>)} 
                             
                         
                     </tbody>
