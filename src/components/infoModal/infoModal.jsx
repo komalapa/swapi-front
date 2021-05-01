@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {getListByLink, digListByLink, SWAPI_LINK} from '../../swapiModule/swapiModule.js'
+import {Card} from 'antd';
 //components import
 //end components import
 import './infoModal.css'
@@ -15,15 +15,22 @@ export class InfoModal extends React.Component{
     }
         
     render(){
-        console.log(this.state)
-        console.log(this.props.data)
+        //console.log(this.state)
+        //console.log(this.props.data)
         return(
-        <div className="info-modal" >      
-            <button className="info-modal-close" onClick={this.props.handleShowMore}>&#10007;close</button>
-            <ul className="info-modal-ul" >
-                {this.props.data && Object.keys(this.props.data).map((title,index) => { return <li key = {index}> <b>{title}</b>: {this.props.data[title]}</li>})}
-            </ul>
-        </div>    )
+            <Card title={this.props.data.name || this.props.data.name } style={{ width: 500 }}>
+                <ul className="info-modal-ul" >
+                    {this.props.data && Object.keys(this.props.data).map((title,index) => { return <li key = {index}> <b>{title}</b>: {this.props.data[title]}</li>})}
+                </ul>
+                <button className="info-modal-close" onClick={this.props.handleShowMore}>&#10007;close</button>
+            </Card>
+        )
+        // <div className="info-modal" >      
+        //     <button className="info-modal-close" onClick={this.props.handleShowMore}>&#10007;close</button>
+        //     <ul className="info-modal-ul" >
+        //         {this.props.data && Object.keys(this.props.data).map((title,index) => { return <li key = {index}> <b>{title}</b>: {this.props.data[title]}</li>})}
+        //     </ul>
+        // </div>    )
     }
 }
     

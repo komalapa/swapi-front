@@ -8,6 +8,7 @@
 }
 .info-modal-ul{
     list-style: none;
+    padding: 0;
 }
 .info-modal-close{
     border: none;

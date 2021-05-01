@@ -14,7 +14,6 @@ export class NavTableRow extends React.Component{
     {
         const path = this.props.link.split('/')
         const destination = path[path.length-2]
-        //console.log(destination)
         return(
             <tr>  
                 <td>{this.props.number}</td>
