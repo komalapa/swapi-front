@@ -1,4 +1,4 @@
-const SWAPI_LINK = 'https://swapi.dev/api/'
+export const SWAPI_LINK = 'https://swapi.dev/api/'
 //Получает основной список по стандартной ссылке
 // export function getMainList(){
 //     return new Promise (function(resolve, reject){
@@ -57,7 +57,7 @@ export function digListByLink(link){
                     .then((resp) => {
                         data[i][key] = resp.name? resp.name : resp.title? resp.title: data[i][key]}))
                 } else if (Array.isArray(data[i][key]))  {
-                    console.log('array')
+                    //console.log('array')
                     for (let j = 0; j < data[i][key].length; j++){
                         if (typeof data[i][key][j] === 'string' && /^http*/.test(data[i][key][j]))  {
                             promisesArray.push(getListByLink(data[i][key][j])
@@ -68,7 +68,8 @@ export function digListByLink(link){
                 }
             }
         }
-        diggedData = data;            
+        diggedData = data; 
+        //console.log(data)           
     })  
     return Promise.allSettled(promisesArray).then(()=>{return diggedData})
     

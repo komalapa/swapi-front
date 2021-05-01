@@ -61,7 +61,5 @@ export class NavTable extends React.Component{
     
 
 NavTable.propTypes ={
-    link : PropTypes.string.isRequired,
     title : PropTypes.string.isRequired,
-    
 }

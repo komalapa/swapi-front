@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 //components import
 //end components import
 //import './table.css'
@@ -11,13 +12,15 @@ export class NavTableRow extends React.Component{
     
     render()
     {
-        //console.log(this.props)
+        const path = this.props.link.split('/')
+        const destination = path[path.length-2]
+        //console.log(destination)
         return(
             <tr>  
                 <td>{this.props.number}</td>
                 <td>{this.props.title}</td>
                 <td>{this.props.link}</td>
-                <td><a href="#">link</a></td>
+                <td><Link to = {`/infotables/${destination}`}>link</Link></td>
             </tr>)
     }
 }

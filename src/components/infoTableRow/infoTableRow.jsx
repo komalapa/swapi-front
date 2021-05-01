@@ -19,12 +19,12 @@ export class InfoTableRow extends React.Component{
     }
     render()
     {
-        //console.log(this.props)
+        console.log(this.props)
         return(
             <tr>  
                 
-                <td>{this.props.item.name}</td>
-                {this.props.item.gender && <td>{this.props.item.gender}</td>}
+                <td>{this.props.item.name || this.props.item.title}</td>
+                {this.props.item.gender && this.props.item.gender == "male" ? <td className="gender-icon">&#9794;</td> : this.props.item.gender == "female" ? <td className="gender-icon">&#9792;</td> : <td></td>}
                 <td>
                     {this.state.showModal && <InfoModal data = {this.props.item}/>}
                     <button onClick = {this.handleShowMore}>Show  {this.state.showModal? 'less...':'more...' }</button>

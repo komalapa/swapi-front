@@ -1,7 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {InfoTableRow} from "../infoTableRow/infoTableRow"
-import {getListByLink, digListByLink} from '../../swapiModule/swapiModule.js'
+import {getListByLink, digListByLink, SWAPI_LINK} from '../../swapiModule/swapiModule.js'
+
+import './infoTable.css'
+
 //components import
 //end components import
 //import './table.css'
@@ -17,13 +20,15 @@ export class InfoTable extends React.Component{
     }
     
     componentDidMount() {
-        
-        digListByLink(this.props.link)
+        const path = this.props.location.pathname.split('/')
+        let link =  SWAPI_LINK + path[path.length -1]
+        //console.log(link)
+        digListByLink(link)
         .then((data) => {
-            this.setState({
-                ...this.state,
+            this.setState(prevstate => ({
+                ...prevstate,
                 loadedData: data
-            })
+            }))
             //console.log(data);
         });
     }
@@ -31,15 +36,14 @@ export class InfoTable extends React.Component{
 
     render()
     {
-        //console.log(this.state.loadedData)
+        
+        
         return(
             <>  
                 <h2>{this.props.title}</h2>
                 <table>
                     <tbody>
-                        {this.state.loadedData && this.state.loadedData.map(item => <InfoTableRow item = {item}/>)} 
-                            
-                        
+                        {this.state.loadedData && this.state.loadedData.map(item => <InfoTableRow item = {item}/>)}     
                     </tbody>
                     
                 </table>
