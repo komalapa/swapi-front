@@ -30,7 +30,8 @@ export class InfoTable extends React.Component{
                 loadedData: data
             }))
             //console.log(data);
-        });
+        })
+        .catch(()=> console.log("something wrong with request"));
     }
       
 
@@ -43,7 +44,7 @@ export class InfoTable extends React.Component{
                 <h2>{this.props.title}</h2>
                 <table>
                     <tbody>
-                        {this.state.loadedData && this.state.loadedData.map(item => <InfoTableRow item = {item}/>)}     
+                        {this.state.loadedData && this.state.loadedData.map((item, index) => <InfoTableRow key = {index} item = {item}/>)}     
                     </tbody>
                     
                 </table>
@@ -53,7 +54,7 @@ export class InfoTable extends React.Component{
     
 
 InfoTable.propTypes ={
-    link : PropTypes.string.isRequired,
-    title : PropTypes.string.isRequired,
+    //link : PropTypes.string.isRequired,
+    //title : PropTypes.string.isRequired,
     
 }

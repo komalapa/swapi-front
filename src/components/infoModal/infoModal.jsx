@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {getListByLink, digListByLink, SWAPI_LINK} from '../../swapiModule/swapiModule.js'
 //components import
 //end components import
 import './infoModal.css'
@@ -12,59 +13,22 @@ export class InfoModal extends React.Component{
         super(props);
         this.state = {info:this.props.data}
     }
-    componentDidMount(){
         
-        for (let key in this.props.data){
-            if (typeof this.props.data[key] == 'string'&&/^http*/.test(this.props.data[key])){
-                this.setState( prevstate => ({
-                    ...prevstate, 
-                    ...prevstate.info, 
-                        key:this.fetchMoreInfo(this.props.data[key])
-                    
-                }))
-            } else if (typeof this.props.data[key] == 'array'){
-                let array = this.props.data[key]
-                for (let i=0; i< array.length; i++){
-                    if (typeof array[i] == 'string' && /^http*/.test(array[i]) ) {
-                        array[i] = 'this.fetchMoreInfo(this.props.data[key][i])'
-                    }
-                }
-                    this.setState( prevstate => ({
-                        ...prevstate, 
-                        ...prevstate.info, 
-                            key:array
-                    
-                    }))
-                }
-            }
-        }
-    
-    fetchMoreInfo(link){
-        fetch(link)
-        .then((response) => {
-            return response.json();
-        })
-        .then((data) => {
-            if (data && data.name){
-                //console.log(data.name)
-                return data.name
-            }
-        });
-    }
     render(){
         console.log(this.state)
         console.log(this.props.data)
         return(
-              
-            <ul class="info-modal">
+        <div className="info-modal" >      
+            <button className="info-modal-close" onClick={this.props.handleShowMore}>&#10007;close</button>
+            <ul className="info-modal-ul" >
                 {this.props.data && Object.keys(this.props.data).map((title,index) => { return <li key = {index}> <b>{title}</b>: {this.props.data[title]}</li>})}
             </ul>
-            )
+        </div>    )
     }
 }
     
 
 InfoModal.propTypes ={
     data : PropTypes.object.isRequired,
-    
+    handleShowMore : PropTypes.func.isRequired,
 }

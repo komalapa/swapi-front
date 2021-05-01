@@ -1,3 +1,17 @@
 .info-modal {
     text-align: left;
+    position: absolute;
+    padding: 10px;
+    background-color: #fff;
+    border: 2px solid gray;
+    
+}
+.info-modal-ul{
+    list-style: none;
+}
+.info-modal-close{
+    border: none;
+    background-color: transparent;
+    color: gray;
+    
 }
