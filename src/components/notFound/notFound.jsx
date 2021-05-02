@@ -9,7 +9,7 @@ export class NotFound extends React.Component{
         return(
             <>  
                 <div className="not-found">
-                    <h1 className="not-found-header">This is not the page you looking for</h1>
+                    <h1 className="not-found-header">This is not the page you're looking for</h1>
                     <img src={r2d2} alt="" className="r2d2"/>
                 </div>
                 

@@ -27,15 +27,19 @@ h1{
   text-align: center;
   color: #999!important;
 }
-
-#root, .app{
+.starwars-font{
+  font-family: "STARWARS", Arial, Helvetica, sans-serif ;
+}
+#root{
   min-height: 100vh;
   background-image: url(./imgs/r2d2bcgrnd.png);
   background-repeat: no-repeat;
   background-size:15%;
   background-position: 100% 100% ;
+  padding-bottom: 4rem;
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+

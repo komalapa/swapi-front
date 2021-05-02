@@ -18,7 +18,7 @@ export class InfoModal extends React.Component{
         //console.log(this.state)
         //console.log(this.props.data)
         return(
-            <Card title={this.props.data.name || this.props.data.name } style={{ width: 500 }}>
+            <Card title={this.props.data.name || this.props.data.name } >
                 <ul className="info-modal-ul" >
                     {this.props.data && Object.keys(this.props.data).map((title,index) => { return <li key = {index}> <b>{title}</b>: {this.props.data[title]}</li>})}
                 </ul>
