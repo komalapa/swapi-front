@@ -2,13 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {InfoModal} from '../infoModal/infoModal'
 import { Button } from 'antd';
-//components import
-//end components import
-//import './table.css'
 
-
-//const CONST_ROBOT_NAME="Hercule"
-//console.log(CONST_ROBOT_NAME)
 export class InfoTableRow extends React.Component{
     constructor(props){
         super(props);
@@ -20,12 +14,11 @@ export class InfoTableRow extends React.Component{
     }
     render()
     {
-        //console.log(this.props.item)
         return(
             <tr>  
                 
                 <td>{this.props.item.name || this.props.item.title}</td>
-                {this.props.item.gender && this.props.item.gender == "male" ? <td className="gender-icon">&#9794;</td> : this.props.item.gender == "female" ? <td className="gender-icon">&#9792;</td> : <td></td>}
+                {this.props.item.gender && this.props.item.gender === "male" ? <td className="gender-icon">&#9794;</td> : this.props.item.gender === "female" ? <td className="gender-icon">&#9792;</td> : <td></td>}
                 <td>
                     {this.state.showModal && <InfoModal handleShowMore={this.handleShowMore} data = {this.props.item} link = {this.props.item.url}/>}
                     <Button onClick = {this.handleShowMore}>Show  {this.state.showModal? 'less...':'more...' }</Button>

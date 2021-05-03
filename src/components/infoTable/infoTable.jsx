@@ -1,22 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import {InfoTableRow} from "../infoTableRow/infoTableRow"
 import {Loading} from "../loading/loading"
 import {Pagination} from "../pagination/pagination"
-import {filterByFilms,digListByLink, getListByLink, SWAPI_LINK} from '../../swapiModule/swapiModule.js'
-
-import { Button } from 'antd';
+import {getListByLink, SWAPI_LINK} from '../../swapiModule/swapiModule.js'
 
 import './infoTable.css'
 
-//components import
-//end components import
-//import './table.css'
-
-
-//const CONST_ROBOT_NAME="Hercule"
-//console.log(CONST_ROBOT_NAME)
 export class InfoTable extends React.Component{
     
     constructor(props) {
@@ -30,8 +20,6 @@ export class InfoTable extends React.Component{
     }
     
     componentDidMount() {
-        
-        //console.log(link)
         getListByLink(this.state.link)
         .then((data) => {
             this.setState(prevstate => ({
@@ -97,8 +85,6 @@ export class InfoTable extends React.Component{
     // }
     render()
     {
-        
-        //console.log(this.state)
         return(
             <> 
             {!this.state.loadedData && <Loading/>} 
@@ -117,16 +103,10 @@ export class InfoTable extends React.Component{
                         {this.state.count>10 && <Pagination  link = {this.state.link} numberOfItems = {this.state.count} loadAnyPage={this.handleAnyPage} nextPage={this.state.nextPage} prevPage={this.state.prevPage}/>}
                     </div>
                 } 
-                
-                
-                
+   
             </>)
     }
 }
     
 
-InfoTable.propTypes ={
-    //link : PropTypes.string.isRequired,
-    //title : PropTypes.string.isRequired,
-    
-}
+

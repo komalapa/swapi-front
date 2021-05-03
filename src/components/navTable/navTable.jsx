@@ -1,17 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import {NavTableRow} from "../navTableRow/navTableRow"
 import {Loading} from "../loading/loading"
-import {getListByLink, digListByLink} from '../../swapiModule/swapiModule.js'
+import {getListByLink} from '../../swapiModule/swapiModule.js'
 import { Table} from 'antd';
-//components import
-//end components import
-//import './table.css'
 
-
-//const CONST_ROBOT_NAME="Hercule"
-//console.log(CONST_ROBOT_NAME)
 export class NavTable extends React.Component{
     
     constructor(props) {
@@ -26,7 +19,6 @@ export class NavTable extends React.Component{
             this.setState({
                 loadedData: data
             })
-            //console.log(data);
         });
     }
       
@@ -67,10 +59,6 @@ export class NavTable extends React.Component{
               })
           }  
           
-          
-          
-          
-        //console.log(this.state.loadedData)
         return(
             <>  
                 {!this.state.loadedData && <Loading/>} 

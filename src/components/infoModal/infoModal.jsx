@@ -1,15 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Card} from 'antd';
-import {filterByFilms,digListByLink2, getListByLink, SWAPI_LINK} from '../../swapiModule/swapiModule.js'
-//components import
-//end components import
+import {digListByLink2} from '../../swapiModule/swapiModule.js'
+
 import {Loading} from "../loading/loading"
 import './infoModal.css'
 
 
-//const CONST_ROBOT_NAME="Hercule"
-//console.log(CONST_ROBOT_NAME)
 export class InfoModal extends React.Component{
     constructor(props){
         super(props);
@@ -17,8 +14,6 @@ export class InfoModal extends React.Component{
     }
 
     componentDidMount() {
-        
-        //console.log(link)
         digListByLink2(this.props.link)
         .then((data) => {
             this.setState(prevstate => ({
@@ -44,8 +39,6 @@ export class InfoModal extends React.Component{
                 }
             }
         }
-        //console.log(this.state)
-        //console.log(this.props.data)
         return(
             <>
                 {!this.state.data && <Loading/>}
@@ -59,12 +52,6 @@ export class InfoModal extends React.Component{
                 }
             </>
         )
-        // <div className="info-modal" >      
-        //     <button className="info-modal-close" onClick={this.props.handleShowMore}>&#10007;close</button>
-        //     <ul className="info-modal-ul" >
-        //         {this.props.data && Object.keys(this.props.data).map((title,index) => { return <li key = {index}> <b>{title}</b>: {this.props.data[title]}</li>})}
-        //     </ul>
-        // </div>    )
     }
 }
     

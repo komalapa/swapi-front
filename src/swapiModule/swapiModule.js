@@ -22,15 +22,12 @@ export function getListByLink(link){
 //Получает список по ссылке и разворачивает названия.
 export function digListByLink(link){
     let promisesArray = [];
-    let diggedData={}
     let mainRequest = getListByLink(link)
     promisesArray.push(mainRequest)
     mainRequest.then(data =>{
-        //console.log(data)
         let fields = data.results ? data.results:[data]
         let promisesArray = [];
         for (let i=0; i< fields.length; i++){
-            //console.log(fields[i])
             for (let key in fields[i]){
                 console.log(key, promisesArray)
                 if (key !== 'url' && typeof fields[i][key] === 'string' && /^http*/.test(fields[i][key]))  {
@@ -38,7 +35,6 @@ export function digListByLink(link){
                     .then((resp) => {
                         fields[i][key] = resp.name? resp.name : resp.title? resp.title: fields[i][key]}))
                 } else if (Array.isArray(fields[i][key]))  {
-                    //console.log('array')
                     for (let j = 0; j < fields[i][key].length; j++){
                         if (typeof fields[i][key][j] === 'string' && /^http*/.test(fields[i][key][j]))  {
                             promisesArray.push(getListByLink(fields[i][key][j])
@@ -48,15 +44,10 @@ export function digListByLink(link){
                     }
                 }
                 if (key === "created" || key === "edited"){
-                    //console.log(data[i][key])
                     fields[i][key] = moment(fields[i][key]).format('ddd-DD/MM/YYYY')
-                    //console.log(data[i][key])
                 }
             }
-        }
-        diggedData = data;
-        diggedData=fields; 
-        //console.log("swapi",diggedData)           
+        }          
     })  
     console.log (promisesArray)
     return Promise.allSettled(promisesArray).then((data)=>{console.log(data[0].value);return data[0].value})   
@@ -65,7 +56,6 @@ export function digListByLink(link){
 export function digListByLink2(link){
     let mainRequest = getListByLink(link)
     var promisesArray = [];
-    var result
    return mainRequest
     .then(data =>{
         
@@ -99,28 +89,28 @@ export function digListByLink2(link){
     
 }
 
-function getFullList(link, data){
-    if (!data) data=[];
-    getListByLink(link)
-    .then(pageData =>{
-        //console.log(data)
-        data = [...data, ...pageData.results]
+// function getFullList(link, data){
+//     if (!data) data=[];
+//     getListByLink(link)
+//     .then(pageData =>{
+//         //console.log(data)
+//         data = [...data, ...pageData.results]
 
-        if (pageData.next) {data = getFullList(pageData.next, data)
-        } else {
-            console.log(data)
-            return [...data]
-        }
-    })
-}
+//         if (pageData.next) {data = getFullList(pageData.next, data)
+//         } else {
+//             console.log(data)
+//             return [...data]
+//         }
+//     })
+// }
 
-export function filterByFilms(link){
-    if (!link) link = SWAPI_LINK;
-    let films = ["none"] 
-    getListByLink(SWAPI_LINK+'films/').then((filmsData)=>{
-        films = filmsData.results.map(item => item.title)
-        //console.log("films",films)
-    })
-    //console.log()
-    console.log(getFullList(link+'people'))
-}
+// export function filterByFilms(link){
+//     if (!link) link = SWAPI_LINK;
+//     let films = ["none"] 
+//     getListByLink(SWAPI_LINK+'films/').then((filmsData)=>{
+//         films = filmsData.results.map(item => item.title)
+//         //console.log("films",films)
+//     })
+//     //console.log()
+//     console.log(getFullList(link+'people'))
+// }

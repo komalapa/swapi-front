@@ -1,13 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-//components import
-//end components import
-//import './table.css'
 
-
-//const CONST_ROBOT_NAME="Hercule"
-//console.log(CONST_ROBOT_NAME)
 export class NavTableRow extends React.Component{
     
     render()
