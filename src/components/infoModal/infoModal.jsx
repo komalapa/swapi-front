@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Card} from 'antd';
-import {digListByLink2} from '../../swapiModule/swapiModule.js'
+import {digListByLink} from '../../swapiModule/swapiModule.js'
 
 import {Loading} from "../loading/loading"
 import './infoModal.css'
@@ -14,7 +14,7 @@ export class InfoModal extends React.Component{
     }
 
     componentDidMount() {
-        digListByLink2(this.props.link)
+        digListByLink(this.props.link)
         .then((data) => {
             this.setState(prevstate => ({
                 ...prevstate,
@@ -25,14 +25,11 @@ export class InfoModal extends React.Component{
     }
         
     render(){
-        console.log("state",this.state.data )
         let prettyData ={}
         if (this.state.data){
             
             for (let key in this.state.data){
-                console.log(typeof this.state.data[key])
                 if (Array.isArray(this.state.data[key])){
-                    console.log('array')
                     prettyData[key] = this.state.data[key].join(', ')
                 }else{
                     prettyData[key] = this.state.data[key]
@@ -57,6 +54,6 @@ export class InfoModal extends React.Component{
     
 
 InfoModal.propTypes ={
-    data : PropTypes.object.isRequired,
+    link : PropTypes.string.isRequired,
     handleShowMore : PropTypes.func.isRequired,
 }

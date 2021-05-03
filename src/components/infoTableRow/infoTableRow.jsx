@@ -20,7 +20,7 @@ export class InfoTableRow extends React.Component{
                 <td>{this.props.item.name || this.props.item.title}</td>
                 {this.props.item.gender && this.props.item.gender === "male" ? <td className="gender-icon">&#9794;</td> : this.props.item.gender === "female" ? <td className="gender-icon">&#9792;</td> : <td></td>}
                 <td>
-                    {this.state.showModal && <InfoModal handleShowMore={this.handleShowMore} data = {this.props.item} link = {this.props.item.url}/>}
+                    {this.state.showModal && <InfoModal handleShowMore={this.handleShowMore} link = {this.props.item.url}/>}
                     <Button onClick = {this.handleShowMore}>Show  {this.state.showModal? 'less...':'more...' }</Button>
                 </td>
             </tr>)
