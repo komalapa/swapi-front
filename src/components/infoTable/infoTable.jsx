@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import {InfoTableRow} from "../infoTableRow/infoTableRow"
 import {Loading} from "../loading/loading"
 import {Pagination} from "../pagination/pagination"
-import {filterByFilms,digListByLink, SWAPI_LINK} from '../../swapiModule/swapiModule.js'
+import {filterByFilms,digListByLink, getListByLink, SWAPI_LINK} from '../../swapiModule/swapiModule.js'
 
 import { Button } from 'antd';
 
@@ -32,7 +32,7 @@ export class InfoTable extends React.Component{
     componentDidMount() {
         
         //console.log(link)
-        digListByLink(this.state.link)
+        getListByLink(this.state.link)
         .then((data) => {
             this.setState(prevstate => ({
                 ...prevstate,
@@ -49,7 +49,7 @@ export class InfoTable extends React.Component{
             ...prevstate,
             loadedData: null,
         }))
-        digListByLink(link)
+        getListByLink(link)
         .then((data) => {
             this.setState(prevstate => ({
                 ...prevstate,
@@ -65,7 +65,7 @@ export class InfoTable extends React.Component{
             ...prevstate,
             loadedData: null,
         }))
-        digListByLink(this.state.nextPage)
+        getListByLink(this.state.nextPage)
         .then((data) => {
             this.setState(prevstate => ({
                 ...prevstate,
@@ -81,7 +81,7 @@ export class InfoTable extends React.Component{
             ...prevstate,
             loadedData: null,
         }))
-        digListByLink(this.state.prevPage)
+        getListByLink(this.state.prevPage)
         .then((data) => {
             this.setState(prevstate => ({
                 ...prevstate,

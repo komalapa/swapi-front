@@ -27,11 +27,12 @@ export function digListByLink(link){
     promisesArray.push(mainRequest)
     mainRequest.then(data =>{
         //console.log(data)
-        let fields = data.results
+        let fields = data.results ? data.results:[data]
         let promisesArray = [];
         for (let i=0; i< fields.length; i++){
+            //console.log(fields[i])
             for (let key in fields[i]){
-                //console.log(key)
+                console.log(key, promisesArray)
                 if (key !== 'url' && typeof fields[i][key] === 'string' && /^http*/.test(fields[i][key]))  {
                     promisesArray.push(getListByLink(fields[i][key])
                     .then((resp) => {
@@ -54,12 +55,49 @@ export function digListByLink(link){
             }
         }
         diggedData = data;
-        diggedData.results=fields; 
-        //console.log(data)           
+        diggedData=fields; 
+        //console.log("swapi",diggedData)           
     })  
-    return Promise.allSettled(promisesArray).then(()=>{return diggedData})
-    
+    console.log (promisesArray)
+    return Promise.allSettled(promisesArray).then((data)=>{console.log(data[0].value);return data[0].value})   
 } 
+
+export function digListByLink2(link){
+    let mainRequest = getListByLink(link)
+    var promisesArray = [];
+    var result
+   return mainRequest
+    .then(data =>{
+        
+        let fields = data.results ? data.results:[data]
+        for (let i=0; i< fields.length; i++){
+            for (let key in fields[i]){
+                if (key !== 'url' && typeof fields[i][key] === 'string' && /^http*/.test(fields[i][key]))  {
+                    console.log("dig url", fields[i][key])
+                    let digPromise = (getListByLink(fields[i][key])
+                    .then((resp) => {
+                        fields[i][key] = resp.name? resp.name : resp.title? resp.title: fields[i][key]; return fields}))
+                    promisesArray.push(digPromise)
+                } else if (Array.isArray(fields[i][key]))  {
+                    for (let j = 0; j < fields[i][key].length; j++){
+                        if (typeof fields[i][key][j] === 'string' && /^http*/.test(fields[i][key][j]))  {
+                            let digPromise = (getListByLink(fields[i][key][j])
+                            .then((resp) => {
+                                fields[i][key][j] = resp.name? resp.name : resp.title? resp.title: fields[i][key][j]; return fields}))
+                            promisesArray.push(digPromise)
+                        }
+                    }
+                }
+                if (key === "created" || key === "edited"){
+                    fields[i][key] = moment(fields[i][key]).format('ddd-DD/MM/YYYY')
+                }
+            }
+        }
+        return Promise.allSettled(promisesArray).then((res)=>{return data});
+    })
+    
+    
+}
 
 function getFullList(link, data){
     if (!data) data=[];

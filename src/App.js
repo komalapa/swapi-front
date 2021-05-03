@@ -12,16 +12,15 @@ function App() {
     <div className="main-wrp">
     <main className="main">
       <BrowserRouter>
-      <Switch>
-        <Route path = '/' exact><Redirect to="/main" /></Route>
-        <Route path = '/main' >
-          <NavTable title = "Main List"/>
-        </Route>
-        <Route path = '/infotables/:theme' exact component={InfoTable}></Route>
-        <Route path = '/' component={NotFound}/> 
-      </Switch>
-      
-    </BrowserRouter>
+        <Switch>
+          <Route path = '/' exact><Redirect to="/main" /></Route>
+          <Route path = '/main' >
+            <NavTable title = "Main List"/>
+          </Route>
+          <Route path = '/infotables/:theme' exact component={InfoTable}></Route>
+          <Route path = '/' component={NotFound}/> 
+        </Switch>
+      </BrowserRouter>
     </main>
     <Footer/>
     </div>
