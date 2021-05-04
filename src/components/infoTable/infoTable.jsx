@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import {InfoTableRow} from "../infoTableRow/infoTableRow"
 import {Loading} from "../loading/loading"
 import {Pagination} from "../pagination/pagination"
+import {Filter} from "../filter/filter"
+
 import {getListByLink, SWAPI_LINK} from '../../swapiModule/swapiModule.js'
 
 import './infoTable.css'
@@ -91,7 +93,7 @@ export class InfoTable extends React.Component{
             {/* <button onClick={this.handletest}>test</button> */}
                 <h1>{this.state.title}</h1>
                 <Link to="/main" className="back-to-main starwars-font">Back to the main list</Link>
-
+                <Filter filterLink = {SWAPI_LINK+'films'}/>
                 <table className="info-table">
                     <tbody>
                         {this.state.loadedData && this.state.loadedData.map((item, index) => <InfoTableRow key = {index} item = {item}/>)}     

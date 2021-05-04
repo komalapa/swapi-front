@@ -55,3 +55,38 @@ export function digListByLink(link){
     
 }
 
+function promiseWhile(data, condition, action) {
+    let whilePr = (data) => {
+        //console.log("while")
+        //console.log("condition",condition(data))
+        //console.log('data', data)
+      return condition(data) ?
+        action(condition(data)).then(whilePr) :
+        Promise.resolve(data);
+    }
+    return whilePr(data);
+  };
+
+function addNextPage() {
+    let list = {next:'', data:[]};
+    return function(link) {
+        //console.log('get', list)
+        return getListByLink(link).then(data => {
+            //console.log(data)
+            //console.log("list before",list.data);
+            list.data = [...list.data , ...data.results]; 
+            //console.log("list after",list.data); 
+            list.next = data.next; 
+            return list})
+    };
+  }
+
+
+export function getAllItemsByLink(link){
+    let addPage = addNextPage()
+    if (!link) link = SWAPI_LINK+'people';
+    link = link.split('?')[0];
+    let list = {next: link, data:[]}
+    let nextPage=(data)=>data.next
+    return promiseWhile(list, nextPage, addPage)
+}
