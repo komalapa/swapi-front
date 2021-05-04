@@ -7,12 +7,14 @@
     padding: 10%;
     box-sizing: border-box;
 }
+
 .not-found-header{
     width: 40%;
     font-size: 70px;
     text-transform: uppercase;
     color: #999
 }
+
 .r2d2{
     width: 40%;
     color: #999;

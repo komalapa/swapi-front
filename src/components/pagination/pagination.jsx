@@ -11,18 +11,18 @@ export class Pagination extends React.Component{
         this.props.loadAnyPage(link)
     }
 
-    render()
-    {
+    render(){
         let curPageInd = 0;
         if (this.props.prevPage){
             curPageInd = +this.props.prevPage.split('?page=')[1]
         }
         
-        if (this.props.link.includes('?page')){console.log("PROBLEM")}
         let links = [this.props.link];
+        
         for (let i = 11; i < this.props.numberOfItems ; i+=PAGE_SIZE){
             links.push(this.props.link+'?page='+(Math.floor(i/PAGE_SIZE)+1))
         }
+        
         return(
             <div className="table-pagination">
                 <Button className="table-pagination-button" onClick={this.handleLoadPage(this.props.prevPage)} disabled = {!this.props.prevPage}>prev</Button>

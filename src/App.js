@@ -11,7 +11,7 @@ function App() {
   return(
     <div className="main-wrp">
     <main className="main">
-      <BrowserRouter>
+      <BrowserRouter basename = "/forswapi">
         <Switch>
           <Route path = '/' exact><Redirect to="/main" /></Route>
           <Route path = '/main' >

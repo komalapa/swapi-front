@@ -4,8 +4,7 @@ import r2d2 from '../../imgs/r2d2.svg'
 
 export class NotFound extends React.Component{
 
-    render()
-    {
+    render(){
         return(
             <>  
                 <div className="not-found">
@@ -13,7 +12,8 @@ export class NotFound extends React.Component{
                     <img src={r2d2} alt="" className="r2d2"/>
                 </div>
                 
-            </>)
+            </>
+        )
     }
 }
     

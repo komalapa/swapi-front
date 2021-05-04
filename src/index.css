@@ -6,7 +6,6 @@
   font-display: fallback;
 }
 
-
 body {
   margin: 0;
   height: 100vh;
@@ -16,6 +15,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
 html{
   min-height: 100vh;
   font-family: Arial, Helvetica, sans-serif;
@@ -28,9 +28,11 @@ h1{
   text-align: center;
   color: #999!important;
 }
+
 .starwars-font{
   font-family: "STARWARS", Arial, Helvetica, sans-serif ;
 }
+
 #root{
   min-height: 100vh;
   background-image: url(./imgs/r2d2bcgrnd.png);
@@ -39,6 +41,7 @@ h1{
   background-position: 100% 100% ;
   padding-bottom: 4rem;
 }
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

@@ -24,18 +24,23 @@ export class InfoModal extends React.Component{
         })
         .catch(()=> console.log("something wrong with request"));
     }
+
     componentWillUnmount(){
         this.setState = (state,callback)=>{
             return;
         }
     }
+
     handleIsShowModal(){
-        this.setState(prevstate => ({isModalVisible:!prevstate.isModalVisible}))
-    } 
+        this.setState(prevstate => ({
+            ...prevstate,
+            isModalVisible:!prevstate.isModalVisible,
+        }))
+    }
+
     render(){
         let prettyData ={}
         if (this.state.data){
-            
             for (let key in this.state.data){
                 if (Array.isArray(this.state.data[key])){
                     prettyData[key] = this.state.data[key].join(', ')
@@ -44,11 +49,11 @@ export class InfoModal extends React.Component{
                 }
             }
         }
-        //console.log(this.props, this.state)
+        
         if (this.state.isModalVisible){
             return(
                 <>  
-                    <Button onClick = {this.handleIsShowModal}>Show  {this.state.isModalVisible ? 'less...':'more...' }</Button>
+                    <Button onClick = {this.handleIsShowModal}>{'Show  less...'}</Button>
                     {!this.state.data && <Loading/>}
                     {this.state.data &&
                         <Modal 
@@ -68,15 +73,12 @@ export class InfoModal extends React.Component{
                 </>)
 
         } else {
-            return <Button onClick = {this.handleIsShowModal}>Show  {this.state.isModalVisible ? 'less...':'more...' }</Button>
+            return <Button onClick = {this.handleIsShowModal}>{'Show  more...' }</Button>
         }
-        
-        
     }
 }
     
 
 InfoModal.propTypes ={
     link : PropTypes.string.isRequired,
-    //handleShowMore : PropTypes.func.isRequired,
 }

@@ -2,6 +2,7 @@
     0% { transform: none;}
     100% { transform: rotate(360deg); }
   }
+
 .loading{
     width: 5em;
     height: 5em;
