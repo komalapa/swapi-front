@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import {Loading} from "../loading/loading"
+//import {Loading} from "../loading/loading"
 import {InfoModal} from '../infoModal/infoModal'
 
 import {getListByLink, getAllItemsByLink} from '../../swapiModule/swapiModule.js'
 
-import { Select, Table, Button } from 'antd';
+import { Select, Table, Button, Modal } from 'antd';
 
 import './filter.css'
 
@@ -16,9 +16,10 @@ const { Option } = Select;
 export class Filter extends React.Component{
     constructor(props){
         super(props);
-        this.state = {filterData:null, list: null, filtredList: null, showModal: false}
+        this.state = {filterData:null, list: null, filtredList: null, showModal: false, filterValue:null}
         this.handleChange = this.handleChange.bind(this);
-        this.handleShowMore = this.handleShowMore.bind(this)
+        this.handleShowMore = this.handleShowMore.bind(this);
+        this.handleHideTable = this.handleHideTable.bind(this)
     }
 
     componentDidMount() {
@@ -47,18 +48,31 @@ export class Filter extends React.Component{
             this.setState(prevstate => ({
                 ...prevstate,
                 filtredList: null,
+                filterValue:null,
           }))
         } else {
         this.setState(prevstate => ({
             ...prevstate,
             filtredList: prevstate.list.filter((item) => (item.films.indexOf(value)!==-1)),
+            filterValue: value,
       }))
     }
     }
     handleShowMore(){
         this.setState(prevstate => ({showModal:!prevstate.showModal}))
     }
-        
+    handleHideTable(){
+        this.setState(prevstate => ({
+            ...prevstate,
+            filtredList: null,
+            filterValue:null,
+      }))
+    }
+    componentWillUnmount(){
+        this.setState = (state,callback)=>{
+            return;
+        }
+    }
     render(){
         const columns = [
             {
@@ -90,20 +104,32 @@ export class Filter extends React.Component{
                   return item
               }  )
         }
-        
+        //console.log(this.state)
         return ( 
-            <>
+            <div className = "filter-wrp">
                 {/* {(!this.state.filterData || !this.state.list) && <Loading/>} */}
-                {this.state.filterData && this.state.list &&
+                {this.state.filterData &&
                 <>
-                    <Select className="filter" id="film-select" defaultValue={null}  onChange={this.handleChange}>
+                    <Select className="filter" id="film-select" defaultValue={null} value = {this.state.filterValue} onChange={this.handleChange} disabled = {!this.state.list}>
                         <Option className="filter-item" value={null}>--Films--</Option>
                         {this.state.filterData.map((item, index)=><Option className="filter-item" key = {index} value={item.url}>{item.title || item.name}</Option>)}
                     </Select>
                 </>
                 }
-                {this.state.filtredList && <Table className ="filtred-table" columns={columns} dataSource={data}/>}
-            </>
+                {/* {this.state.filtredList && <Table className ="filtred-table" columns={columns} dataSource={data}/>} */}
+                {this.state.filtredList &&
+                    <Modal 
+                            title={this.state.filterData.find((item => (item.url === this.state.filterValue))).title} 
+                            visible={true}  
+                            onCancel={this.handleHideTable} 
+                            footer={[
+                                <Button key="back" onClick={this.handleHideTable}> Close </Button>
+                            ]}
+                        >
+                            <Table className ="filtred-table" columns={columns} dataSource={data} showHeader={false}/> 
+                    </Modal>
+                }
+            </div>
         )
     }
 }

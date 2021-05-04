@@ -22,7 +22,11 @@ export class NavTable extends React.Component{
         });
     }
       
-
+    componentWillUnmount(){
+      this.setState = (state,callback)=>{
+          return;
+      }
+  }
     render()
     {
         const columns = [

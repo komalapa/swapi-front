@@ -1,17 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {InfoModal} from '../infoModal/infoModal'
-import { Button } from 'antd';
 
 export class InfoTableRow extends React.Component{
-    constructor(props){
-        super(props);
-        // this.state = {showModal: false}
-        // this.handleShowMore = this.handleShowMore.bind(this)
-    }
-    // handleShowMore(){
-    //     this.setState(prevstate => ({showModal:!prevstate.showModal}))
-    // }
     render()
     {
         //console.log(this.props)

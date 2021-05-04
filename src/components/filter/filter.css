@@ -1,7 +1,17 @@
+.filter-wrp{
+    position: relative;
+    background-color: #fff;
+
+}
 .filter, .filter-item{
     width: 200px;
 }
 
 .filtred-table{
-    width: 100%;
+    width: fit-content;
+    /* position:absolute;
+    top: 50px;
+    left:-100px;
+    z-index: 2; */
+    margin: 0 auto;
 }

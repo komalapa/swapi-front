@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Card, Modal,Button} from 'antd';
+import {Modal,Button} from 'antd';
 import {digListByLink} from '../../swapiModule/swapiModule.js'
 
 import {Loading} from "../loading/loading"
@@ -23,6 +23,11 @@ export class InfoModal extends React.Component{
             }))
         })
         .catch(()=> console.log("something wrong with request"));
+    }
+    componentWillUnmount(){
+        this.setState = (state,callback)=>{
+            return;
+        }
     }
     handleIsShowModal(){
         this.setState(prevstate => ({isModalVisible:!prevstate.isModalVisible}))
@@ -55,11 +60,11 @@ export class InfoModal extends React.Component{
                             ]}
                         >
                             <ul className="info-modal-ul" >
-                                {Object.keys(prettyData).map((title,index) => {if (prettyData[title]) {return <li key = {index}> <b>{title}</b>: {prettyData[title]}</li>}})}
+                                {Object.keys(prettyData).map((title,index) => {return (prettyData[title])? <li key = {index}> <b>{title}</b>: {prettyData[title]}</li> : null})}
                             </ul>
                         </Modal>
                         
-                    }
+                        }
                 </>)
 
         } else {

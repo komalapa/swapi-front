@@ -82,7 +82,11 @@ export class InfoTable extends React.Component{
         })
         .catch(()=> console.log("something wrong with request"));
     }
-
+    componentWillUnmount(){
+        this.setState = (state,callback)=>{
+            return;
+        }
+    }
     render()
     {
         //console.log(this.state)
