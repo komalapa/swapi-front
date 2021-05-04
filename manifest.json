@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "ForSWAPI",
+  "name": "web interface for SWAPI",
   "icons": [
     {
       "src": "favicon.ico",

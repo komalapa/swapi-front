@@ -1,28 +1,28 @@
 {
   "files": {
-    "main.css": "/swapi-front/static/css/main.1a23de49.chunk.css",
-    "main.js": "/swapi-front/static/js/main.c4cb434e.chunk.js",
-    "main.js.map": "/swapi-front/static/js/main.c4cb434e.chunk.js.map",
-    "runtime-main.js": "/swapi-front/static/js/runtime-main.e7ee2717.js",
-    "runtime-main.js.map": "/swapi-front/static/js/runtime-main.e7ee2717.js.map",
-    "static/css/2.54787924.chunk.css": "/swapi-front/static/css/2.54787924.chunk.css",
-    "static/js/2.a2c49ed0.chunk.js": "/swapi-front/static/js/2.a2c49ed0.chunk.js",
-    "static/js/2.a2c49ed0.chunk.js.map": "/swapi-front/static/js/2.a2c49ed0.chunk.js.map",
-    "static/js/3.36d54dea.chunk.js": "/swapi-front/static/js/3.36d54dea.chunk.js",
-    "static/js/3.36d54dea.chunk.js.map": "/swapi-front/static/js/3.36d54dea.chunk.js.map",
-    "index.html": "/swapi-front/index.html",
-    "static/css/2.54787924.chunk.css.map": "/swapi-front/static/css/2.54787924.chunk.css.map",
-    "static/css/main.1a23de49.chunk.css.map": "/swapi-front/static/css/main.1a23de49.chunk.css.map",
-    "static/js/2.a2c49ed0.chunk.js.LICENSE.txt": "/swapi-front/static/js/2.a2c49ed0.chunk.js.LICENSE.txt",
-    "static/media/index.css": "/swapi-front/static/media/r2d2bcgrnd.97025241.png",
-    "static/media/death_star.1ac1a142.svg": "/swapi-front/static/media/death_star.1ac1a142.svg",
-    "static/media/r2d2.4002b4bf.svg": "/swapi-front/static/media/r2d2.4002b4bf.svg"
+    "main.css": "/swapi-front/build/static/css/main.d7da5ccb.chunk.css",
+    "main.js": "/swapi-front/build/static/js/main.3cbcc2e5.chunk.js",
+    "main.js.map": "/swapi-front/build/static/js/main.3cbcc2e5.chunk.js.map",
+    "runtime-main.js": "/swapi-front/build/static/js/runtime-main.4048b691.js",
+    "runtime-main.js.map": "/swapi-front/build/static/js/runtime-main.4048b691.js.map",
+    "static/css/2.54787924.chunk.css": "/swapi-front/build/static/css/2.54787924.chunk.css",
+    "static/js/2.9e5b2a2f.chunk.js": "/swapi-front/build/static/js/2.9e5b2a2f.chunk.js",
+    "static/js/2.9e5b2a2f.chunk.js.map": "/swapi-front/build/static/js/2.9e5b2a2f.chunk.js.map",
+    "static/js/3.74e74aef.chunk.js": "/swapi-front/build/static/js/3.74e74aef.chunk.js",
+    "static/js/3.74e74aef.chunk.js.map": "/swapi-front/build/static/js/3.74e74aef.chunk.js.map",
+    "index.html": "/swapi-front/build/index.html",
+    "static/css/2.54787924.chunk.css.map": "/swapi-front/build/static/css/2.54787924.chunk.css.map",
+    "static/css/main.d7da5ccb.chunk.css.map": "/swapi-front/build/static/css/main.d7da5ccb.chunk.css.map",
+    "static/js/2.9e5b2a2f.chunk.js.LICENSE.txt": "/swapi-front/build/static/js/2.9e5b2a2f.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/swapi-front/build/static/media/r2d2bcgrnd.97025241.png",
+    "static/media/death_star.1ac1a142.svg": "/swapi-front/build/static/media/death_star.1ac1a142.svg",
+    "static/media/r2d2.4002b4bf.svg": "/swapi-front/build/static/media/r2d2.4002b4bf.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.e7ee2717.js",
+    "static/js/runtime-main.4048b691.js",
     "static/css/2.54787924.chunk.css",
-    "static/js/2.a2c49ed0.chunk.js",
-    "static/css/main.1a23de49.chunk.css",
-    "static/js/main.c4cb434e.chunk.js"
+    "static/js/2.9e5b2a2f.chunk.js",
+    "static/css/main.d7da5ccb.chunk.css",
+    "static/js/main.3cbcc2e5.chunk.js"
   ]
 }
