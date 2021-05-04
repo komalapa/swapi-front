@@ -93,7 +93,7 @@ export class InfoTable extends React.Component{
             {/* <button onClick={this.handletest}>test</button> */}
                 <h1>{this.state.title}</h1>
                 <Link to="/main" className="back-to-main starwars-font">Back to the main list</Link>
-                <Filter filterLink = {SWAPI_LINK+'films'}/>
+                <Filter filterLink = {SWAPI_LINK+'films'} link = {this.state.link}/>
                 <table className="info-table">
                     <tbody>
                         {this.state.loadedData && this.state.loadedData.map((item, index) => <InfoTableRow key = {index} item = {item}/>)}     

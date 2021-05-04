@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Card} from 'antd';
+import {Card, Modal,Button} from 'antd';
 import {digListByLink} from '../../swapiModule/swapiModule.js'
 
 import {Loading} from "../loading/loading"
@@ -10,7 +10,8 @@ import './infoModal.css'
 export class InfoModal extends React.Component{
     constructor(props){
         super(props);
-        this.state = {data:null}
+        this.state = {data:null, isModalVisible: false}
+        this.handleIsShowModal = this.handleIsShowModal.bind(this)
     }
 
     componentDidMount() {
@@ -23,7 +24,9 @@ export class InfoModal extends React.Component{
         })
         .catch(()=> console.log("something wrong with request"));
     }
-        
+    handleIsShowModal(){
+        this.setState(prevstate => ({isModalVisible:!prevstate.isModalVisible}))
+    } 
     render(){
         let prettyData ={}
         if (this.state.data){
@@ -36,24 +39,38 @@ export class InfoModal extends React.Component{
                 }
             }
         }
-        return(
-            <>
-                {!this.state.data && <Loading/>}
-                {this.state.data &&
-                    <Card title={this.state.data.name || this.props.state.title } >
-                        <ul className="info-modal-ul" >
-                            {Object.keys(prettyData).map((title,index) => {return <li key = {index}> <b>{title}</b>: {prettyData[title]}</li>})}
-                        </ul>
-                        <button className="info-modal-close" onClick={this.props.handleShowMore}>&#10007;close</button>
-                    </Card>
-                }
-            </>
-        )
+        if (this.state.isModalVisible){
+            return(
+                <>  
+                    <Button onClick = {this.handleIsShowModal}>Show  {this.state.isModalVisible ? 'less...':'more...' }</Button>
+                    {!this.state.data && <Loading/>}
+                    {this.state.data &&
+                        <Modal 
+                            title={this.state.data.name || this.props.state.title } 
+                            visible={true}  
+                            onCancel={this.handleIsShowModal} 
+                            footer={[
+                                <Button key="back" onClick={this.handleIsShowModal}> Close </Button>
+                            ]}
+                        >
+                            <ul className="info-modal-ul" >
+                                {Object.keys(prettyData).map((title,index) => {return <li key = {index}> <b>{title}</b>: {prettyData[title]}</li>})}
+                            </ul>
+                        </Modal>
+                        
+                    }
+                </>)
+
+        } else {
+            return <Button onClick = {this.handleIsShowModal}>Show  {this.state.isModalVisible ? 'less...':'more...' }</Button>
+        }
+        
+        
     }
 }
     
 
 InfoModal.propTypes ={
     link : PropTypes.string.isRequired,
-    handleShowMore : PropTypes.func.isRequired,
+    //handleShowMore : PropTypes.func.isRequired,
 }
