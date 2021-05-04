@@ -54,7 +54,7 @@ export class InfoModal extends React.Component{
                             ]}
                         >
                             <ul className="info-modal-ul" >
-                                {Object.keys(prettyData).map((title,index) => {return <li key = {index}> <b>{title}</b>: {prettyData[title]}</li>})}
+                                {Object.keys(prettyData).map((title,index) => {if (prettyData[title]) {return <li key = {index}> <b>{title}</b>: {prettyData[title]}</li>}})}
                             </ul>
                         </Modal>
                         
