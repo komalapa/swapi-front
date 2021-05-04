@@ -8,6 +8,8 @@ import {getListByLink, getAllItemsByLink} from '../../swapiModule/swapiModule.js
 
 import { Select, Table, Button } from 'antd';
 
+import './filter.css'
+
 const { Option } = Select;
 
 
@@ -89,20 +91,18 @@ export class Filter extends React.Component{
               }  )
         }
         
-
-
-        
-        //console.log(this.state)
         return ( 
             <>
-                {!this.state.filterData && <Loading/>}
-                {this.state.filterData &&
-                    <Select defaultValue={null} style={{ width: 120 }} onChange={this.handleChange}>
-                        <Option value={null}>all</Option>
-                        {this.state.filterData.map((item, index)=><Option key = {index} value={item.url}>{item.title || item.name}</Option>)}
+                {/* {(!this.state.filterData || !this.state.list) && <Loading/>} */}
+                {this.state.filterData && this.state.list &&
+                <>
+                    <Select className="filter" id="film-select" defaultValue={null}  onChange={this.handleChange}>
+                        <Option className="filter-item" value={null}>--Films--</Option>
+                        {this.state.filterData.map((item, index)=><Option className="filter-item" key = {index} value={item.url}>{item.title || item.name}</Option>)}
                     </Select>
+                </>
                 }
-                {this.state.filtredList && <Table columns={columns} dataSource={data}/>}
+                {this.state.filtredList && <Table className ="filtred-table" columns={columns} dataSource={data}/>}
             </>
         )
     }

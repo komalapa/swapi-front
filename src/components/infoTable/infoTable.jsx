@@ -82,18 +82,20 @@ export class InfoTable extends React.Component{
         })
         .catch(()=> console.log("something wrong with request"));
     }
-    // handletest(){
-    //     filterByFilms()
-    // }
+
     render()
     {
+        //console.log(this.state)
         return(
             <> 
             {!this.state.loadedData && <Loading/>} 
             {/* <button onClick={this.handletest}>test</button> */}
                 <h1>{this.state.title}</h1>
-                <Link to="/main" className="back-to-main starwars-font">Back to the main list</Link>
-                <Filter filterLink = {SWAPI_LINK+'films'} link = {this.state.link}/>
+                <div className="header-controls-wrp">
+                    <Link to="/main" className="back-to-main starwars-font">Back to the main list</Link>
+                    {this.state.title!=="films" && <Filter filterLink = {SWAPI_LINK+'films'} link = {this.state.link}/>}
+                </div>
+                
                 <table className="info-table">
                     <tbody>
                         {this.state.loadedData && this.state.loadedData.map((item, index) => <InfoTableRow key = {index} item = {item}/>)}     

@@ -14,6 +14,7 @@ export class InfoTableRow extends React.Component{
     // }
     render()
     {
+        //console.log(this.props)
         return(
             <tr>  
                 

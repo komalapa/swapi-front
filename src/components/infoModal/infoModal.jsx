@@ -39,6 +39,7 @@ export class InfoModal extends React.Component{
                 }
             }
         }
+        //console.log(this.props, this.state)
         if (this.state.isModalVisible){
             return(
                 <>  
@@ -46,7 +47,7 @@ export class InfoModal extends React.Component{
                     {!this.state.data && <Loading/>}
                     {this.state.data &&
                         <Modal 
-                            title={this.state.data.name || this.props.state.title } 
+                            title={this.state.data.name || this.state.data.title } 
                             visible={true}  
                             onCancel={this.handleIsShowModal} 
                             footer={[
