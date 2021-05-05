@@ -57,8 +57,7 @@ export class InfoTable extends React.Component{
         }
     }
 
-    render()
-    {
+    render(){
         return(
             <> 
             {!this.state.loadedData && <Loading/>} 

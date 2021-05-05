@@ -84,7 +84,7 @@ function addNextPage() {
     };
   }
 
-
+//Полный список по ссылке без замены ссылок на наазвания
 export function getAllItemsByLink(link){
     let addPage = addNextPage()
     if (!link) link = SWAPI_LINK+'people';

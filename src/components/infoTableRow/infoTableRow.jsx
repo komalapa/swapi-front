@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import {InfoModal} from '../infoModal/infoModal'
 
 export class InfoTableRow extends React.Component{
-    render()
-    {
+    render(){
         //console.log(this.props)
         return(
             <tr>  

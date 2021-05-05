@@ -114,9 +114,9 @@ export class Filter extends React.Component{
                 {/* {(!this.state.filterData || !this.state.list) && <Loading/>} */}
                 {this.state.filterData &&
                 <>
-                    <Select className="filter" id="film-select" aria-label = "select film for filter"  defaultValue={null} value = {this.state.filterValue} onChange={this.handleChange} disabled = {!this.state.list}>
-                        <Option className="filter-item" value={null} aria-label = "all films">--Films--</Option>
-                        {this.state.filterData.map((item, index)=><Option className="filter-item" key = {index} value={item.url} aria-label = {item.title}>{item.title || item.name} </Option>)}
+                    <Select className="filter" id="film-select"   defaultValue={null} value = {this.state.filterValue} onChange={this.handleChange} disabled = {!this.state.list}>
+                        <Option className="filter-item" value={null} >--Films--</Option>
+                        {this.state.filterData.map((item, index)=><Option className="filter-item" key = {index} value={item.url}>{item.title || item.name} </Option>)}
                     </Select>
                 </>
                 }
